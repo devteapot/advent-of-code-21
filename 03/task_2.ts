@@ -1,5 +1,6 @@
-const file = await Deno.readTextFile("1.txt");
+const file2 = await Deno.readTextFile("1.txt");
 
+// didn't know you could do parseInt("01010", 2) .-.
 const binaryStringToDecimal = (binaryString: string): number => 
   [...binaryString]
     .reverse()
@@ -25,8 +26,8 @@ const filterByPredicate = (
   )
 }
 
-const oxigen = filterByPredicate(file.split('\n'), 0, (a, b) => a >= b)[0];
-const co2 = filterByPredicate(file.split('\n'), 0, (a, b) => a < b)[0];
+const oxigen = filterByPredicate(file2.split('\n'), 0, (a, b) => a >= b)[0];
+const co2 = filterByPredicate(file2.split('\n'), 0, (a, b) => a < b)[0];
 
 console.log("oxigen: ", oxigen);
 console.log("CO2: ", co2);
