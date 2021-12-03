@@ -1,4 +1,4 @@
-use std::{fs};
+use std::fs;
 
 fn u8_vec_to_number(vec: &Vec<u8>) -> i32 {
     vec
@@ -9,20 +9,10 @@ fn u8_vec_to_number(vec: &Vec<u8>) -> i32 {
         .sum()
 }
 
-fn main() {
-    let lines = fs::read_to_string("/Users/lino/dev/advent-of-code-21/03/1.txt")
-        .unwrap();
+fn task_1(lines: &Vec<&str>, cols: &usize, rows: &usize) {
+    let mut result_vec = vec![0; *cols];
 
-    let split_lines: Vec<&str> = lines
-        .split('\n')
-        .collect();
-
-    let rows = split_lines.len();
-    let cols = split_lines[0].len();
-
-    let mut result_vec = vec![0; cols];
-
-    split_lines
+    lines
         .iter()
         .for_each(|x| x
             .chars()
@@ -42,6 +32,19 @@ fn main() {
         .map(|x| if *x != 0 {0} else {1})
         .collect();
 
-    println!("gamma: {:?}, epsiplon: {:?}", u8_vec_to_number(&gamma), u8_vec_to_number(&epsilon));
-    println!("{}", u8_vec_to_number(&gamma) * u8_vec_to_number(&epsilon));
+    println!("task-1: {}", u8_vec_to_number(&gamma) * u8_vec_to_number(&epsilon));
+}
+
+fn main() {
+    let lines = fs::read_to_string("/Users/lino/dev/advent-of-code-21/03/0.txt")
+        .unwrap();
+
+    let split_lines: Vec<&str> = lines
+        .split('\n')
+        .collect();
+
+    let rows = split_lines.len();
+    let cols = split_lines[0].len();
+
+    task_1(&split_lines, &cols, &rows);
 }
